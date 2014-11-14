@@ -11,7 +11,7 @@
       flex-direction: column;
       height: 100%;
       background-color: #494949;
-      font-family: "Helvetica Neue", sans-serif;
+      font-family: sans-serif;
       font-size: 16px;
       color: #2B2B2B;
     }
@@ -172,7 +172,9 @@
   </app-header>
   <app-toolbar>
     <app-search-input>
-      <span class="input-icon"><t>&#128270;</t></span>
+      <span class="input-icon">
+        <img src="/sky/examples/flights/images/magnifying-glass.png" style="width: 16px">
+      </span>
       <span class="input-text"><t>flights today to dc by price</t></span>
     </app-search-input>
   </app-toolbar>
