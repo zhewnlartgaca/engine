@@ -31,6 +31,7 @@
 #ifndef ScriptCallFrame_h
 #define ScriptCallFrame_h
 
+#include "core/InspectorTypeBuilder.h"
 #include "wtf/Forward.h"
 #include "wtf/text/WTFString.h"
 
@@ -47,6 +48,8 @@ public:
     const String& sourceURL() const { return m_scriptName; }
     unsigned lineNumber() const { return m_lineNumber; }
     unsigned columnNumber() const { return m_column; }
+
+    PassRefPtr<TypeBuilder::Console::CallFrame> buildInspectorObject() const;
 
 private:
     String m_functionName;
