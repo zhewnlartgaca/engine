@@ -31,13 +31,12 @@
 #ifndef SKY_ENGINE_CORE_INSPECTOR_SCRIPTCALLFRAME_H_
 #define SKY_ENGINE_CORE_INSPECTOR_SCRIPTCALLFRAME_H_
 
-#include "gen/sky/core/InspectorTypeBuilder.h"
 #include "sky/engine/wtf/Forward.h"
 #include "sky/engine/wtf/text/WTFString.h"
 
 namespace blink {
 
-class ScriptCallFrame  {
+class ScriptCallFrame {
 public:
     ScriptCallFrame();
     ScriptCallFrame(const String& functionName, const String& scriptId, const String& scriptName, unsigned lineNumber, unsigned column = 0);
@@ -48,8 +47,6 @@ public:
     const String& sourceURL() const { return m_scriptName; }
     unsigned lineNumber() const { return m_lineNumber; }
     unsigned columnNumber() const { return m_column; }
-
-    PassRefPtr<TypeBuilder::Console::CallFrame> buildInspectorObject() const;
 
 private:
     String m_functionName;
