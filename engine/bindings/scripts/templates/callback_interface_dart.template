@@ -5,4 +5,4 @@
 // WARNING: Do not edit - generated code.
 part of dart.sky;
 
-typedef void {{cpp_class}}({{methods[0].argument_declarations | join(', ')}});
+typedef void {{cpp_class}}({{methods[0].dart_argument_declarations | join(', ')}});
