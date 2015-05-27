@@ -5,6 +5,8 @@
 #include "sky/engine/config.h"
 #include "sky/engine/core/painting/Paint.h"
 
+#include "sky/engine/core/painting/DrawLooper.h"
+
 namespace blink {
 
 Paint::Paint()
@@ -13,6 +15,12 @@ Paint::Paint()
 
 Paint::~Paint()
 {
+}
+
+void Paint::setDrawLooper(DrawLooper* looper)
+{
+    ASSERT(looper);
+    m_paint.setLooper(looper->looper());
 }
 
 } // namespace blink
