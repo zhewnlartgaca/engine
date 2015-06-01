@@ -8,5 +8,4 @@
 ] interface Image {
     readonly attribute long width;
     readonly attribute long height;
-    attribute DOMString src;
 };
