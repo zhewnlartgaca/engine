@@ -8,6 +8,9 @@ group("example") {
   deps = []
 
   if (is_android) {
-    deps += [ "//sky/sdk/example/mine_digger" ]
+    deps += [
+      "//sky/sdk/example/mine_digger",
+      "//sky/sdk/example/stocks",
+    ]
   }
 }
