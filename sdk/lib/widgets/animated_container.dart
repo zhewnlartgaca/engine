@@ -11,23 +11,23 @@ import '../painting/box_painter.dart';
 import '../theme/shadows.dart';
 import 'basic.dart';
 
-// This class builds a Container object from a collection of optionally-
-// animated properties. Use syncFields to update the Container's properties,
+// This class builds a Builder object from a collection of optionally-
+// animated properties. Use syncFields to update the Builder's properties,
 // which will optionally animate them using an AnimationPerformance.
-class AnimatedContainer {
+class AnimationBuilder {
   AnimatedType<double> opacity;
   AnimatedType<Point> position;
   AnimatedType<double> shadow;
   AnimatedColor backgroundColor;
 
-  // These don't animate, but are used to build the Container anyway.
+  // These don't animate, but are used to build the AnimationBuilder anyway.
   double borderRadius;
   Shape shape;
 
   Map<AnimatedVariable, AnimationPerformance> _variableToPerformance =
       new Map<AnimatedVariable, AnimationPerformance>();
 
-  AnimatedContainer();
+  AnimationBuilder();
 
   AnimationPerformance createPerformance(List<AnimatedType> variables,
                                          {Duration duration}) {
@@ -65,7 +65,7 @@ class AnimatedContainer {
     return current;
   }
 
-  void syncFields(AnimatedContainer source) {
+  void syncFields(AnimationBuilder source) {
     _syncField(position, source.position);
     _syncField(shadow, source.shadow);
     _syncField(backgroundColor, source.backgroundColor);
