@@ -2,8 +2,10 @@
 // Use of this source code is governed by a BSD-style license that can be
 // found in the LICENSE file.
 
+import 'package:sky/painting/text_style.dart';
 import 'package:sky/editing/input.dart';
 import 'package:sky/widgets/basic.dart';
+import 'package:sky/widgets/default_text_style.dart';
 import 'package:sky/widgets/icon_button.dart';
 import 'package:sky/widgets/ink_well.dart';
 import 'package:sky/widgets/material.dart';
@@ -11,19 +13,46 @@ import 'package:sky/widgets/navigator.dart';
 import 'package:sky/widgets/scaffold.dart';
 import 'package:sky/widgets/scrollable_viewport.dart';
 import 'package:sky/widgets/snack_bar.dart';
+import 'package:sky/widgets/theme.dart';
 import 'package:sky/widgets/tool_bar.dart';
 
-typedef void MeasurementHandler(Measurement measurement);
+import 'fitness_item.dart';
 
-class Measurement {
-  Measurement({ this.when, this.weight });
+class Measurement extends FitnessItem {
+  Measurement({ DateTime when, this.weight }) : super(when: when);
 
-  final DateTime when;
   final double weight;
 
   // TODO(jackson): Internationalize
   String get displayWeight => "${weight.toStringAsFixed(2)} lbs";
-  String get displayDate => "${when.year.toString()}-${when.month.toString().padLeft(2,'0')}-${when.day.toString().padLeft(2,'0')}";
+}
+
+class MeasurementRow extends FitnessItemRow {
+  MeasurementRow({ Measurement measurement, FitnessItemHandler onDismissed })
+    : super(item: measurement, onDismissed: onDismissed);
+
+  Widget buildContent() {
+    Measurement measurement = item;
+    List<Widget> children = [
+      new Flexible(
+        child: new Text(
+          measurement.displayWeight,
+          style: const TextStyle(textAlign: TextAlign.right)
+        )
+      ),
+      new Flexible(
+        child: new Text(
+          measurement.displayDate,
+          style: Theme.of(this).text.caption.copyWith(textAlign: TextAlign.right)
+        )
+      )
+    ];
+    return new Flex(
+      children,
+      alignItems: FlexAlignItems.baseline,
+      textBaseline: DefaultTextStyle.of(this).textBaseline
+    );
+  }
 }
 
 class MeasurementFragment extends StatefulComponent {
@@ -31,7 +60,7 @@ class MeasurementFragment extends StatefulComponent {
   MeasurementFragment({ this.navigator, this.onCreated });
 
   Navigator navigator;
-  MeasurementHandler onCreated;
+  FitnessItemHandler onCreated;
 
   void syncFields(MeasurementFragment source) {
     navigator = source.navigator;
@@ -76,7 +105,7 @@ class MeasurementFragment extends StatefulComponent {
     });
   }
 
-  Widget buildMeasurementPane() {
+  Widget buildBody() {
     Measurement measurement = new Measurement(when: new DateTime.now());
     return new Material(
       type: MaterialType.canvas,
@@ -105,7 +134,7 @@ class MeasurementFragment extends StatefulComponent {
   Widget build() {
     return new Scaffold(
       toolbar: buildToolBar(),
-      body: buildMeasurementPane(),
+      body: buildBody(),
       snackBar: buildSnackBar()
     );
   }
