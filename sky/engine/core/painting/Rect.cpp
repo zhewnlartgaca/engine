@@ -11,16 +11,10 @@
 
 namespace blink {
 
-// Convert dart_rect._value[0...3] ==> SkRect.
-Rect DartConverter<Rect>::FromArgumentsWithNullCheck(Dart_NativeArguments args,
-                                                     int index,
-                                                     Dart_Handle& exception) {
+// Convert dart_rect._value[0...3] ==> SkRect
+Rect DartConverter<Rect>::FromDart(Dart_Handle dart_rect) {
   Rect result;
   result.is_null = true;
-
-  Dart_Handle dart_rect = Dart_GetNativeArgument(args, index);
-  DCHECK(!LogIfError(dart_rect));
-
   if (Dart_IsNull(dart_rect))
     return result;
 
@@ -50,6 +44,14 @@ Rect DartConverter<Rect>::FromArgumentsWithNullCheck(Dart_NativeArguments args,
 
   result.is_null = false;
   return result;
+}
+
+Rect DartConverter<Rect>::FromArgumentsWithNullCheck(Dart_NativeArguments args,
+                                                     int index,
+                                                     Dart_Handle& exception) {
+  Dart_Handle dart_rect = Dart_GetNativeArgument(args, index);
+  DCHECK(!LogIfError(dart_rect));
+  return FromDart(dart_rect);
 }
 
 } // namespace blink
