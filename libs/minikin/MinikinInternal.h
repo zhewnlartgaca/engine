@@ -29,6 +29,9 @@ namespace android {
 
 extern Mutex gMinikinLock;
 
+// Aborts if gMinikinLock is not acquired. Do nothing on the release build.
+void assertMinikinLocked();
+
 }
 
 #endif  // MINIKIN_INTERNAL_H
