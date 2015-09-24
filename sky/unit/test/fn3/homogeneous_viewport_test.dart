@@ -2,25 +2,7 @@ import 'package:sky/src/fn3.dart';
 import 'package:test/test.dart';
 
 import 'widget_tester.dart';
-
-class TestComponent extends StatefulComponent {
-  TestComponent(this.viewport);
-  final HomogeneousViewport viewport;
-  TestComponentState createState() => new TestComponentState(this);
-}
-
-class TestComponentState extends ComponentState<TestComponent> {
-  TestComponentState(TestComponent config): super(config);
-  bool _flag = true;
-  void go(bool flag) {
-    setState(() {
-      _flag = flag;
-    });
-  }
-  Widget build(BuildContext context) {
-    return _flag ? config.viewport : new Text('Not Today');
-  }
-}
+import 'test_widgets.dart';
 
 void main() {
   test('HomogeneousViewport mount/dismount smoke test', () {
@@ -32,39 +14,42 @@ void main() {
     // so if our widget is 100 pixels tall, it should fit exactly 6 times.
 
     Widget builder() {
-      return new TestComponent(new HomogeneousViewport(
-        builder: (BuildContext context, int start, int count) {
-          List<Widget> result = <Widget>[];
-          for (int index = start; index < start + count; index += 1) {
-            callbackTracker.add(index);
-            result.add(new Container(
-              key: new ValueKey<int>(index),
-              height: 100.0,
-              child: new Text("$index")
-            ));
-          }
-          return result;
-        },
-        startOffset: 0.0,
-        itemExtent: 100.0
-      ));
+      return new FlipComponent(
+        left: new HomogeneousViewport(
+          builder: (BuildContext context, int start, int count) {
+            List<Widget> result = <Widget>[];
+            for (int index = start; index < start + count; index += 1) {
+              callbackTracker.add(index);
+              result.add(new Container(
+                key: new ValueKey<int>(index),
+                height: 100.0,
+                child: new Text("$index")
+              ));
+            }
+            return result;
+          },
+          startOffset: 0.0,
+          itemExtent: 100.0
+        ),
+        right: new Text('Not Today')
+      );
     }
 
     tester.pumpFrame(builder());
 
-    StatefulComponentElement testComponent = tester.findElement((element) => element.widget is TestComponent);
-    TestComponentState testComponentState = testComponent.state;
+    StatefulComponentElement element = tester.findElement((element) => element.widget is FlipComponent);
+    FlipComponentState testComponent = element.state;
 
     expect(callbackTracker, equals([0, 1, 2, 3, 4, 5]));
 
     callbackTracker.clear();
-    testComponentState.go(false);
+    testComponent.flip();
     tester.pumpFrameWithoutChange();
 
     expect(callbackTracker, equals([]));
 
     callbackTracker.clear();
-    testComponentState.go(true);
+    testComponent.flip();
     tester.pumpFrameWithoutChange();
 
     expect(callbackTracker, equals([0, 1, 2, 3, 4, 5]));
@@ -95,13 +80,16 @@ void main() {
       return result;
     };
 
-    TestComponent testComponent;
+    FlipComponent testComponent;
     Widget builder() {
-      testComponent = new TestComponent(new HomogeneousViewport(
-        builder: itemBuilder,
-        startOffset: offset,
-        itemExtent: 200.0
-      ));
+      testComponent = new FlipComponent(
+        left: new HomogeneousViewport(
+          builder: itemBuilder,
+          startOffset: offset,
+          itemExtent: 200.0
+        ),
+        right: new Text('Not Today')
+      );
       return testComponent;
     }
 
@@ -145,14 +133,17 @@ void main() {
       return result;
     };
 
-    TestComponent testComponent;
+    FlipComponent testComponent;
     Widget builder() {
-      testComponent = new TestComponent(new HomogeneousViewport(
-        builder: itemBuilder,
-        startOffset: offset,
-        itemExtent: 200.0,
-        direction: ScrollDirection.horizontal
-      ));
+      testComponent = new FlipComponent(
+        left: new HomogeneousViewport(
+          builder: itemBuilder,
+          startOffset: offset,
+          itemExtent: 200.0,
+          direction: ScrollDirection.horizontal
+        ),
+        right: new Text('Not Today')
+      );
       return testComponent;
     }
 
