@@ -52,8 +52,8 @@ struct DartConverter<Uint8List> {
   static void SetReturnValue(Dart_NativeArguments args, Uint8List val);
 
   static Uint8List FromArgumentsWithNullCheck(Dart_NativeArguments args,
-                                                int index,
-                                                Dart_Handle& exception);
+                                              int index,
+                                              Dart_Handle& exception);
 };
 
 } // namespace blink
