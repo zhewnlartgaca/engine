@@ -44,9 +44,8 @@ Uint8List DartConverter<Uint8List>::FromArgumentsWithNullCheck(
 }
 
 void DartConverter<Uint8List>::SetReturnValue(Dart_NativeArguments args,
-                                                Uint8List val) {
+                                              Uint8List val) {
   Dart_SetReturnValue(args, val.dart_handle());
 }
-
 
 } // namespace blink
