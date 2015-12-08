@@ -23,6 +23,7 @@
     <GlyphID id="3" name="U+20E3"/>
     <GlyphID id="4" name="0"/>
     <GlyphID id="5" name="U+1F470"/>
+    <GlyphID id="6" name="U+203C_VS16"/>
   </GlyphOrder>
 
   <head>
@@ -145,6 +146,7 @@
     <mtx name="U+20E3" width="500" lsb="93"/>
     <mtx name="0" width="500" lsb="93"/>
     <mtx name="U+1F470" width="500" lsb="93"/>
+    <mtx name="U+203C_VS16" width="500" lsb="93"/>
   </hmtx>
 
   <cmap>
@@ -156,6 +158,9 @@
       <map code="0x0030" name="0" />
       <map code="0x1F470" name="U+1F470" />
     </cmap_format_12>
+    <cmap_format_14 format="14" platformID="0" platEncID="5" length="30" numVarSelectorRecords="1">
+      <map uvs="0xFE0F" uv="0x203C" name="U+203C_VS16" />
+    </cmap_format_14>
   </cmap>
 
   <loca>
@@ -184,6 +189,9 @@
       <contour></contour><instructions><assembly></assembly></instructions>
     </TTGlyph>
     <TTGlyph name="U+1F470" xMin="0" yMin="0" xMax="0" yMax="0">
+      <contour></contour><instructions><assembly></assembly></instructions>
+    </TTGlyph>
+    <TTGlyph name="U+203C_VS16" xMin="0" yMin="0" xMax="0" yMax="0">
       <contour></contour><instructions><assembly></assembly></instructions>
     </TTGlyph>
   </glyf>
