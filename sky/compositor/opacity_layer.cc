@@ -22,10 +22,11 @@ void OpacityLayer::Paint(PaintContext::ScopedFrame& frame) {
   SkPaint paint;
   paint.setColor(SkColorSetARGB(alpha_, 0, 0, 0));
   paint.setXfermodeMode(SkXfermode::kSrcOver_Mode);
+
   SkCanvas& canvas = frame.canvas();
+  SkAutoCanvasRestore save(&canvas, false);
   canvas.saveLayer(&paint_bounds(), &paint);
   PaintChildren(frame);
-  canvas.restore();
 }
 
 }  // namespace compositor
