@@ -23,6 +23,7 @@ namespace android {
 class MinikinFont;
 
 void purgeHbFontCacheLocked();
+void purgeHbFont(const MinikinFont* minikinFont);
 hb_font_t* getHbFontLocked(MinikinFont* minikinFont);
 
 }  // namespace android
