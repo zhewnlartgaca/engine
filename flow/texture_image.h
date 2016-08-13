@@ -13,8 +13,6 @@ namespace flow {
 sk_sp<SkImage> TextureImageCreate(GrContext* context,
                                   SkImageGenerator& generator);
 
-sk_sp<SkImage> BitmapImageCreate(SkImageGenerator& generator);
-
 }  // namespace flow
 
 #endif  // FLUTTER_FLOW_TEXTURE_IMAGE_H_
