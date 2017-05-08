@@ -20,6 +20,7 @@ source_set("shims") {
   sources = [
     "log/log.h",
     "log/log.cc",
+    "utils/JenkinsHash.cpp",
     "utils/JenkinsHash.h",
     "utils/LruCache.h",
     "utils/TypeHelpers.h",
