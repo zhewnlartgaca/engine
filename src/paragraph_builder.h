@@ -21,6 +21,7 @@
 #include <string>
 
 #include "lib/ftl/macros.h"
+#include "lib/txt/src/paragraph.h"
 #include "lib/txt/src/paragraph_style.h"
 #include "lib/txt/src/styled_runs.h"
 #include "lib/txt/src/text_style.h"
@@ -38,6 +39,8 @@ class ParagraphBuilder {
   void Pop();
 
   void AddText(const uint16_t* text, size_t length);
+
+  std::unique_ptr<Paragraph> Build();
 
  private:
   std::vector<uint16_t> text_;
