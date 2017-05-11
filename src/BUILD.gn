@@ -27,12 +27,13 @@ static_library("src") {
     "paragraph_builder.cc",
     "paragraph_builder.h",
     "paragraph_style.h",
+    "styled_runs.cc",
     "styled_runs.h",
     "text_align.h",
     "text_style.h",
   ]
 
-  deps = [
+  public_deps = [
     "//lib/ftl",
     "//lib/txt/libs/minikin",
     "//third_party/skia",
