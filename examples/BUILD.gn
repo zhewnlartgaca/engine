@@ -20,6 +20,7 @@ executable("txt_example") {
   deps = [
     "//dart/runtime:libdart_jit",
     "//flutter/fml",
+    "//lib/txt/libs/minikin",
     "//lib/txt/src",
     "//third_party/icu:icuuc",
     "//third_party/skia",

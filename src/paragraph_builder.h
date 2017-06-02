@@ -38,7 +38,7 @@ class ParagraphBuilder {
 
   void Pop();
 
-  void AddText(const uint16_t* text, size_t length);
+  void AddText(const std::u16string& text);
 
   std::unique_ptr<Paragraph> Build();
 
