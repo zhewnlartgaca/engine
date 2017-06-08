@@ -23,7 +23,7 @@ enum class TextAlign {
   left,
   right,
   center,
-  // justify,
+  justify,
 };
 
 }  // namespace txt
