@@ -21,15 +21,15 @@
 
 namespace txt {
 
-static std::string gFontdir;
+static std::string gFontDir;
 static ftl::CommandLine gCommandLine;
 
 const std::string GetFontDir() {
-  return gFontdir;
+  return gFontDir;
 }
 
-void SetFontDir(std::string& dir) {
-  gFontdir = dir;
+void SetFontDir(const std::string& dir) {
+  gFontDir = dir;
 }
 
 const ftl::CommandLine& GetCommandLineForProcess() {

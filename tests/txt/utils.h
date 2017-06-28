@@ -22,7 +22,7 @@ namespace txt {
 
 const std::string GetFontDir();
 
-void SetFontDir(std::string& dir);
+void SetFontDir(const std::string& dir);
 
 const ftl::CommandLine& GetCommandLineForProcess();
 
