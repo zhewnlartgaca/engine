@@ -18,8 +18,8 @@
 
 #include "lib/ftl/command_line.h"
 #include "lib/ftl/logging.h"
-#include "lib/txt/src/styled_runs.h"
-#include "lib/txt/src/text_style.h"
+#include "txt/styled_runs.h"
+#include "txt/text_style.h"
 #include "utils.h"
 
 namespace txt {

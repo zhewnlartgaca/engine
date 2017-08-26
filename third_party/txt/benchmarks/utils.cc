@@ -17,7 +17,7 @@
 #include <string>
 
 #include "lib/ftl/command_line.h"
-#include "lib/txt/tests/txt/utils.h"
+#include "utils.h"
 
 namespace txt {
 
