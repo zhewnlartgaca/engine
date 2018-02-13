@@ -12,6 +12,7 @@ dependencies:
   convert: any
   crypto: any
   front_end: any
+  flutter_kernel_transformers: any
   kernel: any
   logging: any
   meta: any
@@ -71,6 +72,8 @@ dependency_overrides:
     path: ../../third_party/dart/third_party/pkg/convert
   crypto:
     path: ../../third_party/dart/third_party/pkg/crypto
+  flutter_kernel_transformers:
+    path: ../flutter_kernel_transformers
   front_end:
     path: ../../third_party/dart/pkg/front_end/
   kernel:
