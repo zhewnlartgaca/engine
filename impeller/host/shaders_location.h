@@ -7,6 +7,8 @@
 
 namespace impeller {
 
+std::string ImpellerShadersDirectory();
+
 std::optional<std::string> ImpellerShadersLocation(std::string library_name);
 
 }  // namespace impeller
