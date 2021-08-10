@@ -20,8 +20,6 @@ class Paint {
 
  private:
   Color color_;
-
-  FML_DISALLOW_COPY_AND_ASSIGN(Paint);
 };
 
 }  // namespace impeller
