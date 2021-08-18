@@ -6,12 +6,6 @@
 
 namespace impeller {
 
-Paint::Paint() = default;
-
-Paint::~Paint() = default;
-
-void Paint::SetColor(Color color) {
-  color_ = std::move(color);
-}
+//
 
 }  // namespace impeller
