@@ -4,29 +4,20 @@
 
 #pragma once
 
-#include <Metal/Metal.h>
-
 #include "flutter/fml/macros.h"
 
 namespace impeller {
 
-class SamplerLibrary;
-
 class Sampler {
  public:
-  bool IsValid() const;
+  virtual ~Sampler();
 
-  ~Sampler();
+  virtual bool IsValid() const = 0;
 
-  id<MTLSamplerState> GetMTLSamplerState() const;
+ protected:
+  Sampler();
 
  private:
-  friend SamplerLibrary;
-
-  id<MTLSamplerState> state_ = nullptr;
-
-  Sampler(id<MTLSamplerState> state);
-
   FML_DISALLOW_COPY_AND_ASSIGN(Sampler);
 };
 
