@@ -8,12 +8,13 @@
 #include <vector>
 
 #include "flutter/fml/macros.h"
+#include "impeller/aiks/canvas_pass.h"
 #include "impeller/entity/entity.h"
 
 namespace impeller {
 
 struct Picture {
-  std::vector<Entity> entities;
+  std::vector<CanvasPass> passes;
 };
 
 }  // namespace impeller
