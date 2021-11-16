@@ -4,17 +4,26 @@
 
 #pragma once
 
+#include <memory>
+
 #include "flutter/fml/macros.h"
+#include "impeller/renderer/texture.h"
 
 namespace impeller {
 
 class Image {
  public:
-  Image();
+  Image(std::shared_ptr<Texture> texture);
 
   ~Image();
 
+  ISize GetSize() const;
+
+  std::shared_ptr<Texture> GetTexture() const;
+
  private:
+  const std::shared_ptr<Texture> texture_;
+
   FML_DISALLOW_COPY_AND_ASSIGN(Image);
 };
 
