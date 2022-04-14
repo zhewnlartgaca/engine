@@ -8,7 +8,6 @@
 #include <optional>
 #include "impeller/entity/contents/filters/filter_contents.h"
 #include "impeller/entity/contents/filters/filter_input.h"
-#include "impeller/geometry/matrix.h"
 
 namespace impeller {
 
